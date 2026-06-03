@@ -179,5 +179,15 @@ Tells the metadata server where the management daemon is. Since both run on mast
 
 Where metadata is physically stored on disk. BeeGFS creates this directory automatically on first start.
 
+`/etc/beegfs/beegfs-storage.conf` - Storage Server
+The storage server is what actually holds your data — FASTQs, BAMs, VCFs, everything. It splits files into chunks and stores them on the disk.
+
+`sysMgmtdHost = localhost`
+
+Same as meta — points to the management daemon on master.
+
+`storeStorageDirectory = /data/beegfs/disk1/storage`
+
+Where file chunks are stored on the 8TB disk. When you write a file to `/mnt/beegfs`, the data physically ends up here.
 
 
