@@ -37,7 +37,7 @@ df -h | grep nvme3n1
 
 ```
 
-## Worker 02
+## Worker 01
 
 ```
 # 1. Format
