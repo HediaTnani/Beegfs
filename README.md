@@ -2,7 +2,7 @@
 
 On the master 
 
-´´´
+```
 # 1. Format
 sudo mkfs.ext4 /dev/nvme3n1
 
@@ -24,4 +24,4 @@ sudo apt install -y beegfs-mgmtd beegfs-meta beegfs-storage \
                     beegfs-client beegfs-utils
 
 
-´´´
+```
