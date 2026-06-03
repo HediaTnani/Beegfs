@@ -163,3 +163,21 @@ BeeGFS 8 requires TLS certificates by default for encrypted communication betwee
 `license-disable = true`
 
 BeeGFS 8 has enterprise features that require a paid license (quota management, mirroring, etc). We disable the license check because we don't need those features. Basic storage pooling is free.
+
+`/etc/beegfs/beegfs-meta.conf` - Metadata Server
+The metadata server tracks where every file and directory lives across the cluster. It doesn't store file content, only :
+
+-  filenames
+-  permissions
+-  which storage targets hold the data
+
+`sysMgmtdHost = localhost`
+
+Tells the metadata server where the management daemon is. Since both run on master, we use `localhost`.
+
+`storeMetaDirectory = /data/beegfs/disk1/meta`
+
+Where metadata is physically stored on disk. BeeGFS creates this directory automatically on first start.
+
+
+
