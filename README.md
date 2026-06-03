@@ -145,3 +145,21 @@ df -h | grep nvme0n1
 
 ```
 
+Now let's configure BeeGFS. 
+
+## Master — BeeGFS configuration
+
+`/etc/beegfs/beegfs-mgmtd.toml` - Management Daemon
+This is the brain of the cluster. It knows every node, every disk, every file location.
+
+`db-file = "/data/beegfs/disk1/mgmtd/mgmtd.sqlite"`
+
+BeeGFS stores all cluster information in a SQLite database. We put it on the 8TB disk (`/data/beegfs/disk1`) and not on the OS disk so it doesn't fill up the system.
+
+`tls-disable = true`
+
+BeeGFS 8 requires TLS certificates by default for encrypted communication between nodes. We disable it because we are on a private cluster network - no need for encryption between trusted nodes.
+
+`license-disable = true`
+
+BeeGFS 8 has enterprise features that require a paid license (quota management, mirroring, etc). We disable the license check because we don't need those features. Basic storage pooling is free.
