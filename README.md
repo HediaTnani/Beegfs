@@ -1,6 +1,6 @@
 # Beegfs
-
-On the master 
+## The Master Node 
+On the master the disk `/dev/nvme3n1` is the 8T one. 
 
 ```
 # 1. Format
@@ -23,5 +23,16 @@ sudo apt update
 sudo apt install -y beegfs-mgmtd beegfs-meta beegfs-storage \
                     beegfs-client beegfs-utils
 
+# 6. Create mount point
+sudo mkdir -p /data/beegfs/disk1
+
+# 7. Mount
+sudo mount /dev/nvme3n1 /data/beegfs/disk1
+
+# 8. Persist on reboot
+echo "/dev/nvme3n1  /data/beegfs/disk1  ext4  defaults  0 0" | sudo tee -a /etc/fstab
+
+# 9. Verify
+df -h | grep nvme3n1
 
 ```
