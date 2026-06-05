@@ -207,6 +207,13 @@ echo "/mnt/beegfs /etc/beegfs/beegfs-client.conf" | sudo tee /etc/beegfs/beegfs-
 sudo mkdir -p /mnt/beegfs
 ```
 
+To check if everything is running correctly on the workers 
+
+```
+sudo systemctl enable --now beegfs-storage
+sudo systemctl status beegfs-storage # registers with master, gets a target ID
+```
+
 ### 2d. Secure Boot on each worker
 
 Same module-rejection issue applies on every worker. Disable Secure Boot
